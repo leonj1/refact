@@ -6,7 +6,7 @@ on:
 jobs:
   setup-vars:
     name: Setup variables
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     outputs:
       now_tag: ${{ steps.set-variables.outputs.now_tag }}
     steps:
@@ -23,7 +23,7 @@ jobs:
 
   build-and-push-image:
     name: Dockerize and push
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     needs: [setup-vars]
     steps:
       # Free GitHub Actions Environment Disk Space

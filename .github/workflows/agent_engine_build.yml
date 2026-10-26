@@ -76,7 +76,7 @@ jobs:
       LLM_LS_TARGET: ${{ matrix.target }}
 
     name: dist (${{ matrix.target }})
-    runs-on: ${{ matrix.os }}
+    runs-on: "${{ (matrix.os) == 'windows-latest' && fromJSON('[\"self-hosted\",\"windows\",\"x64\"]') || (matrix.os) == 'ubuntu-22.04' && fromJSON('[\"self-hosted\",\"linux\",\"x64\"]') || (matrix.os) == 'macos-13' && fromJSON('[\"self-hosted\",\"macOS\",\"x64\"]') || (matrix.os) == 'macos-14' && fromJSON('[\"self-hosted\",\"macOS\",\"ARM64\"]') || (matrix.os) }}"
     container: ${{ matrix.container }}
 
     steps:

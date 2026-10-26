@@ -14,7 +14,7 @@ on:
 jobs:
   setup-vars:
     name: Setup variables
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     outputs:
       now_tag: ${{ steps.set-variables.outputs.now_tag }}
     steps:
@@ -26,7 +26,7 @@ jobs:
 
   cicl:
     name: Cicl
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     needs: [setup-vars]
     outputs:
       version: ${{ steps.properties.outputs.version }}
